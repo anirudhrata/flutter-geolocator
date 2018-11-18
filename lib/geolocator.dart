@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:google_api_availability/google_api_availability.dart';
+
 import 'package:meta/meta.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -64,7 +64,7 @@ class Geolocator {
   /// position instead of the [FusedLocationProviderClient]. On iOS this is ignored.
   bool forceAndroidLocationManager = false;
 
-  GooglePlayServicesAvailability _googlePlayServicesAvailability;
+
 
   Future<bool> _shouldForceAndroidLocationManager() async {
     // By doing this check here, we save the App from always checking if Google Play Services
@@ -73,12 +73,8 @@ class Geolocator {
       return true;
     }
 
-    if (_googlePlayServicesAvailability == null)
-      _googlePlayServicesAvailability =
-          await GoogleApiAvailability().checkGooglePlayServicesAvailability();
-
-    return _googlePlayServicesAvailability !=
-        GooglePlayServicesAvailability.success;
+    
+    return false;
   }
 
   /// Returns the current position taking the supplied [desiredAccuracy] into account.
